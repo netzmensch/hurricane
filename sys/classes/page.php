@@ -33,7 +33,8 @@ class page extends base {
 	
 	private function renderPage($filePath) {
 		$content = new content(file_get_contents($filePath));
-		$htmlContent = $content->parseContent();
+		$content->parseContent();
+		$htmlContent = $content->getContent();
 		return $this->renderTemplate($htmlContent);
 	}
 	
