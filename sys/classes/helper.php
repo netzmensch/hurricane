@@ -10,6 +10,7 @@ class helper {
 
 	
 	public function error($message) {
+		header("HTTP/1.0 404 Not Found");
 		die($message);
 	}
 	
