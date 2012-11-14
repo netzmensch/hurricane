@@ -13,13 +13,23 @@ class app  extends base {
 	
 	public function run() {
 		$path = $this->getInput('p');
+		
+		if(!$path) {
+			$path = 'start';
+		}
+		
 		$this->page->setPath($path);
 		echo $this->page->render($path);
 	}
 	
 	
 	private function getInput($name) {
-		return $_GET[$name];
+		if(!empty($_GET[$name])) {
+			
+			return $_GET[$name];
+		}
+		
+		return false;
 	}
 	
 }
