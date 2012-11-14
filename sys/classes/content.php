@@ -21,10 +21,19 @@ class content extends base {
 	}
 	
 	private function parseFormating() {
+		//h1 - h10 parsing
 		for($i=10;$i>0;$i--) {
 			$this->replaceContentElement('/' . str_repeat('\+', $i) . '(.*)/', '<h' . $i . '>$1</h' . $i . '>');
 		}
 		
+		//p tags
+		$this->replaceContentElement('/(.+)/', '<p>$1</p>');
+		
+		//bold
+		$this->replaceContentElement('/(.*)\[b\](.*)\[\/b\](.*)/', '$1<strong>$2</strong>$3');
+		
+		//links
+		$this->replaceContentElement('/(.*)\[(.*)\,(.*)\](.*)/', '$1<a href="$3">$2</a>$4');
 	}
 	
 	private function parseMedia() {
