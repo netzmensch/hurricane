@@ -37,12 +37,11 @@ class app extends base
     /**
      * @param string $name
      *
-     * @return bool
+     * @return string|bool
      */
     protected function getInput($name)
     {
         if (!empty($_GET[$name])) {
-
             return $_GET[$name];
         }
 
