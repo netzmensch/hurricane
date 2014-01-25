@@ -1,11 +1,22 @@
 <?php
-
 namespace redcross\hurricane\classes;
 
-class base {
-	protected $helper;
-	
-	public function __construct() {
-		$this->helper = new helper();
-	}
+/**
+ * Class base
+ * @package redcross\hurricane\classes
+ */
+class base
+{
+    /**
+     * @var \redcross\hurricane\classes\helper
+     */
+    protected $helper;
+
+    /**
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->helper = new helper();
+    }
 }
