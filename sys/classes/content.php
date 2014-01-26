@@ -32,48 +32,42 @@ class content extends base
     }
 
     /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+    }
+
+    /**
      * @return void
      */
     public function parseContent()
     {
-        $this->parseFormating();
-        $this->parseMedia();
+        $parsers = $this->getParsers();
+
+        /** @var abstractParser $currentParser */
+        $currentParser = null;
+
+        foreach ($parsers as $parser) {
+            $currentParser = new $parser($this->getContent());
+            $currentParser->parseContent();
+            $this->setContent($currentParser->getContent());
+        }
     }
 
     /**
-     * @return void
+     * @return array
      */
-    protected function parseFormating()
+    protected function getParsers()
     {
-        //h1 - h10 parsing
-        for ($i = 10; $i > 0; $i--) {
-            $this->replaceContentElement('/' . str_repeat('\+', $i) . '(.*)/', '<h' . $i . '>$1</h' . $i . '>');
+        $parsers = array();
+
+        foreach (glob("sys/classes/parsers/*.php") as $filePath) {
+            $pathParts = explode('/', $filePath);
+            $parsers[] = __NAMESPACE__ . '\\parsers\\' . str_replace('.php', '',end($pathParts));
         }
 
-        //p tags
-        $this->replaceContentElement('/(.+)/', '<p>$1</p>');
-
-        //bold
-        $this->replaceContentElement('/(.*)\[b\](.*)\[\/b\](.*)/', '$1<strong>$2</strong>$3');
-
-        //links
-        $this->replaceContentElement('/(.*)\[(.*)\,(.*)\](.*)/', '$1<a href="$3">$2</a>$4');
-    }
-
-    /**
-     * @return void
-     */
-    protected function parseMedia()
-    {
-        $this->replaceContentElement('/(.*)\[(.*)\](.*)/', '$1<img src="page/$2">$3');
-    }
-
-    /**
-     * @param string $pattern
-     * @param string $replacement
-     */
-    protected function replaceContentElement($pattern, $replacement)
-    {
-        $this->content = preg_replace($pattern, $replacement, $this->content);
+        return $parsers;
     }
 }
