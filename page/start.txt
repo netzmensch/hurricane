@@ -4,4 +4,4 @@
 ++++ Test h4
 +++++ Test h5
 lorem ipsum bla [b]bli[/b] blub...[google,http://www.google.de]
-[blume.jpg]
+[[blume.jpg]]
