@@ -1,25 +1,25 @@
 <?php
 namespace redcross\hurricane;
 
-function __autoload($class)
-{
-    $parts = explode('\\', $class);
+use redcross\hurricane\classes\app;
 
+function autoLoad($class)
+{
     $folders = array(
-        'sys/classes',
-        'sys/classes/parsers',
+        '/sys/classes',
+        '/sys/classes/parsers',
     );
+    $nameSpaceParts = explode('\\', $class);
 
     foreach ($folders as $folder) {
-        $fullPath = __DIR__ . $folder . '/' . $class . end($parts) . '.php';
+        $fullPath = __DIR__ . $folder . '/' . end($nameSpaceParts) . '.php';
         if(file_exists($fullPath)) {
             require $fullPath;
         }
     }
 }
 
-use redcross\hurricane\classes\app;
+spl_autoload_register(__NAMESPACE__ . '\autoLoad');
 
 $app = new app();
-
 $app->run();
