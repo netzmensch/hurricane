@@ -1,12 +1,22 @@
 <?php
-
 namespace redcross\hurricane;
 
-require_once('sys/classes/helper.php');
-require_once('sys/classes/base.php');
-require_once('sys/classes/page.php');
-require_once('sys/classes/content.php');
-require_once('sys/classes/app.php');
+function __autoload($class)
+{
+    $parts = explode('\\', $class);
+
+    $folders = array(
+        'sys/classes',
+        'sys/classes/parsers',
+    );
+
+    foreach ($folders as $folder) {
+        $fullPath = __DIR__ . $folder . '/' . $class . end($parts) . '.php';
+        if(file_exists($fullPath)) {
+            require $fullPath;
+        }
+    }
+}
 
 use redcross\hurricane\classes\app;
 
