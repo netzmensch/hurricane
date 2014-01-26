@@ -28,15 +28,15 @@ class page extends base
     {
         $pages = $this->getAllPageNames();
 
-        $fixedPath = 'page/' . strtolower($this->path) . '.txt';
+        $fixedPath = CONFIG_PATH_CONTENT . '/' . strtolower($this->path) . '.txt';
 
         foreach ($pages as $pagePath) {
-            if (strtolower($pagePath) == $fixedPath) {
+            if (strtolower($pagePath) === $fixedPath) {
                 return $this->renderPage($pagePath);
             }
         }
 
-        $this->helper->error('wrong path...');
+        $this->helper->error(CONFIG_APP_WRONG_PATH_MESSAGE);
     }
 
     /**
@@ -44,7 +44,7 @@ class page extends base
      */
     protected function getAllPageNames()
     {
-        $pages = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator('page'));
+        $pages = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator(CONFIG_PATH_CONTENT));
 
         return iterator_to_array($pages);
     }
@@ -70,7 +70,7 @@ class page extends base
      */
     protected function renderTemplate($content)
     {
-        $template = file_get_contents('res/template/index.html');
+        $template = file_get_contents(CONFIG_PATH_TEMPLATES . '/index.html');
         $rendered = str_replace('{$content}', $content, $template);
 
         return $rendered;

@@ -3,11 +3,18 @@ namespace redcross\hurricane;
 
 use redcross\hurricane\classes\app;
 
+define('CONFIG_PATH_CLASSES', '/sys/classes');
+define('CONFIG_PATH_PARSERS', '/sys/classes/parsers');
+define('CONFIG_PATH_TEMPLATES', 'res/template');
+define('CONFIG_PATH_CONTENT', 'page');
+define('CONFIG_APP_STARTPAGE', 'start');
+define('CONFIG_APP_WRONG_PATH_MESSAGE', 'wrong path...');
+
 function autoLoad($class)
 {
     $folders = array(
-        '/sys/classes',
-        '/sys/classes/parsers',
+        CONFIG_PATH_CLASSES,
+        CONFIG_PATH_PARSERS,
     );
     $nameSpaceParts = explode('\\', $class);
 

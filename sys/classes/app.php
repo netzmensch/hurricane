@@ -20,7 +20,7 @@ class app extends base
         $path = $this->getInput('p');
 
         if (!$path) {
-            $path = 'start';
+            $path = CONFIG_APP_STARTPAGE;
         }
 
         $this->page = new page($path);
