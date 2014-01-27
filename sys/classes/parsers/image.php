@@ -14,6 +14,6 @@ class image extends abstractParser
      */
     public function parseContent()
     {
-        $this->replaceContentElement('/\[\[(.*)\]\]/', '<img src="page/$1">');
+        $this->replaceContentElement('/\[\[(.*)\]\]/', '<img class="img-responsive" src="page/$1">');
     }
 }
