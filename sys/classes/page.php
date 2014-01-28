@@ -56,7 +56,7 @@ class page extends base
      */
     protected function renderPage($filePath)
     {
-        $content = new content(file_get_contents($filePath));
+        $content = new content(htmlspecialchars(file_get_contents($filePath), ENT_COMPAT, 'UTF-8', false));
         $content->parseContent();
         $htmlContent = $content->getContent();
 
