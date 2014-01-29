@@ -26,7 +26,6 @@ class page extends base
     public function render()
     {
         $pages = $this->getAllPageNames();
-
         $fixedPath = CONFIG_PATH_CONTENT . '/' . strtolower($this->path) . '.txt';
 
         foreach ($pages as $pagePath) {
@@ -70,8 +69,8 @@ class page extends base
     protected function renderTemplate($content)
     {
         $template = file_get_contents(CONFIG_PATH_TEMPLATES . '/index.html');
-        $rendered = str_replace('{$content}', $content, $template);
+        $renderedTemplate = str_replace('{$content}', $content, $template);
 
-        return $rendered;
+        return $renderedTemplate;
     }
 }

@@ -41,8 +41,10 @@ class app extends base
      */
     protected function getInput($name)
     {
-        if (!empty($_GET[$name])) {
-            return $_GET[$name];
+        $inputValue = $_GET[$name];
+
+        if (!empty($inputValue)) {
+            return $inputValue;
         }
 
         return false;
