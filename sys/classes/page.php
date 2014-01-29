@@ -17,7 +17,6 @@ class page extends base
      */
     public function __construct($path)
     {
-        parent::__construct();
         $this->path = $path;
     }
 
@@ -36,7 +35,7 @@ class page extends base
             }
         }
 
-        $this->helper->error(CONFIG_APP_WRONG_PATH_MESSAGE);
+        $this->error(CONFIG_APP_WRONG_PATH_MESSAGE);
     }
 
     /**

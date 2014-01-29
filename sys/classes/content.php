@@ -18,8 +18,6 @@ class content extends base
      */
     public function __construct($content)
     {
-        parent::__construct();
-
         $this->content = $content;
     }
 

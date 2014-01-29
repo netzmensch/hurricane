@@ -8,15 +8,11 @@ namespace redcross\hurricane\classes;
 class base
 {
     /**
-     * @var \redcross\hurricane\classes\helper
+     * @param string $message
      */
-    protected $helper;
-
-    /**
-     * @return void
-     */
-    public function __construct()
+    public function error($message)
     {
-        $this->helper = new helper();
+        header("HTTP/1.0 404 Not Found");
+        die($message);
     }
 }
