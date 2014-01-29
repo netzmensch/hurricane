@@ -1,6 +1,8 @@
 +Welcome
 Hurricane is a super slim and file based cms. You don't need any database or other prerequisites - only a basic webserver with php support.
 
+[[stepimage.png]]
+
 ++Features
 - simple markup
 - easy extendable parser plugins for your content

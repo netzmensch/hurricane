@@ -8,7 +8,7 @@ Although Hurricane contains only simple markup, sometimes a little documentation
 This one is the simplest: every line in an page.txt file is an paragraph.
 ----
 +++headlines
-If you want to add an headline, put some "+" in front of it. Every "+" stands for an higher header value.
+If you want to add an headline, put some "+" in front of it. Every "+" stands for an higher head value.
 
 for example:
 "+Headline" stands for <h1>Headline</h1>
