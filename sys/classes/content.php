@@ -61,7 +61,7 @@ class content extends base
     {
         $parsers = array();
 
-        foreach (glob(CONFIG_PATH_PARSERS . "/*.php") as $filePath) {
+        foreach (glob(__DIR__ . '/../../' . CONFIG_PATH_PARSERS . "/*.php") as $filePath) {
             $pathParts = explode('/', $filePath);
             $parsers[] = __NAMESPACE__ . '\\parsers\\' . str_replace('.php', '',end($pathParts));
         }
