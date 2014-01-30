@@ -14,6 +14,6 @@ class paragraphs extends abstractParser
      */
     public function parseContent()
     {
-        $this->replaceContentElement('/(.+)/', '<p>$1</p>');
+        $this->replaceContentElement('/^(?!<)(.+)$/m', '<p>$1</p>');
     }
 }
