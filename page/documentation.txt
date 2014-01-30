@@ -2,6 +2,19 @@
 
 Although Hurricane contains only simple markup, sometimes a little documentation helps:
 
+++write content
+Hurricane manages a page tree based on the folder structure in root folder "page".
+
+For example, if your page folder looks like this:
+page/start.txt
+page/subpage/contact.txt
+
+then you can reach this content by following urls:
+www.your_domain.com/start
+www.your_domain.com/subpage/contact
+
+and so on.
+
 ++basic parsers
 
 +++paragraph
