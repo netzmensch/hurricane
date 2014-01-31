@@ -1,4 +1,4 @@
-hurricane
+hurricane [![Build Status](https://travis-ci.org/netzmensch/hurricane.png?branch=master)](https://travis-ci.org/netzmensch/hurricane)
 =========
 
 Hurricane is a super slim and file based cms. You don't need any database or other prerequisites - only a basic webserver with php support.
